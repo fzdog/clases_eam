@@ -1,0 +1,35 @@
+<div class="container m-3">
+   
+        <div class="form-group">
+            <label for="exampleInputEmail1">Numero 1:</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            [(ngModel)]="numero1Papa"    
+            placeholder="Ingrese un numero">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Numero 2:</label>
+            <input type="text"
+            [(ngModel)]="numero2Papa" 
+            class="form-control" id="exampleInputPassword1" placeholder="Ingrese numero 2">
+        </div>
+       
+    <div class="container">
+        <!--EL ERROR ERA PORQUE TENIAMOS MAL EL NOMBRE DE LA VARIABLE OUTPUT EN EL COMPONENTE app-resultados,
+        LO TENIAMOS obtenerResultado Y EL NOMBRE ES: total (verificar en @output el nombre de la variable )-->
+        <!--app-resultados 
+        [numero1]="numero1Papa" 
+        [numero2]="numero2Papa"
+        (obtenerResultado) = "calculoHijo($event)"
+        ></app-resultados-->
+
+
+        <app-resultados 
+            [numero1]="numero1Papa" 
+            [numero2]="numero2Papa"
+            (total) = "calculoHijo($event)"
+            ></app-resultados>
+
+            <p>Total papá: {{totalPapa}}</p>
+    </div>
+
+</div>

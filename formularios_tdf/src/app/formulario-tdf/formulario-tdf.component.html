@@ -1,0 +1,40 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit(formularioPersona)" #formularioPersona="ngForm">
+        <div class="mb-3">
+            <label for="nombreControl" class="form-label">Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.nombre" name="nombre" #nombre="ngModel"
+                id="nombreControl" placeholder="Nombre" required>
+
+            <div [hidden]="(nombre.valid)" class="alert alert-danger mt-2" role="alert">
+                El nombre es requerido
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="apellidosControl" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" [(ngModel)]="persona.apellidos" name="apellidos"
+                #apellidos="ngModel" id="apellidosControl" placeholder="Apellidos" required>
+            <div [hidden]="(apellidos.valid) " class="alert alert-danger mt-2" role="alert">
+                El apellido es requerido
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="emailControl" class="form-label">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="persona.email" name="email" #email="ngModel"
+                id="emailControl" placeholder="name@example.com" required>
+            <div [hidden]="(email.valid)" class="alert alert-danger mt-2" role="alert">
+                El email es requerido
+            </div>
+        </div>
+        <div class="mb-4 form-check">
+            <label for="checkAdult" class="form-label">Acepto soy mayor de 18</label>
+            <input type="checkbox" [(ngModel)]="persona.mayorDeEdad" name="mayorDeEdad" #mayorDeEdad="ngModel"
+                class="form-check-input" id="checkAdult" name="checkAdult">
+            <div [hidden]="(mayorDeEdad.valid)" class="alert alert-danger mt-2" role="alert">
+                El check es requerido
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-4 float-end">
+            <button type="submit" class="btn btn-info btn-lg">Guardar</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+.my-container{
+    height: calc(100vh - 100px);
+    width: calc(100vw - 20px);
+    
+}
+
+.side{
+    
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
+

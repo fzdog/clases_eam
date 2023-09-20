@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from './usuario';
 import Swal from 'sweetalert2';
+import { Login } from './login';
+import { LoginService } from './login.service';
+import { SwalUtils } from '../utils/swal-utils';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,42 +13,52 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
 
-  loginFormulario!: FormGroup
-  usuario: Usuario = new Usuario()
+  loginForm!: FormGroup
+  login: Login = new Login()
+  
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+    private router:Router,
+    private loginService: LoginService) {
 
   }
 
   ngOnInit() {
-    this.loginFormulario = this.iniciarFormulario()
+    this.loginForm = this.iniciarFormulario()
   }
 
   iniciarFormulario(): FormGroup {
     return this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(5)]]
+      username: ['electivaeam', [Validators.required]],
+      password: ['electiva2023', [Validators.required,Validators.minLength(5)]]
     })
 
   }
 
   onLogin() {
-    if (this.loginFormulario.valid) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Bienvenido',
-        text: 'Todo está OK!'        
-      })
+    if (this.loginForm.valid) {
+      this.extractData()
+      this.loginService.login(this.login).subscribe((res) => {
+        console.log(res);
+        this.router.navigateByUrl('dashboard')
+        SwalUtils.customMessageOk('Bienvenido','login Correcto')        
+      }, (error) => {
+        this.router.navigateByUrl('dashboard')
+        SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
+        console.log(error);
+        
+      })      
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
-      })
+      this.router.navigateByUrl('dashboard')
+      SwalUtils.customMessageError('Ops! Hubo un error', 'login Incorrecto')        
     }
-    console.log(this.loginFormulario);
+    console.log(this.loginForm);
 
+  }
+
+  extractData() {
+    this.login.username = this.loginForm.get("username")?.value
+    this.login.password = this.loginForm.value.password
   }
 
 }

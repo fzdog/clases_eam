@@ -6,14 +6,10 @@ import { SidenavComponent } from './sidenav.component';
 
 
 @NgModule({
-  declarations: [
-    SidenavComponent
-  ],
+  declarations: [SidenavComponent],
   imports: [
     CommonModule,
     SidenavRoutingModule
-  ], exports: [
-    SidenavComponent
-  ]
+  ],exports:[SidenavComponent]
 })
 export class SidenavModule { }

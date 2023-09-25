@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Usuario } from './usuario';
-import Swal from 'sweetalert2';
 import { Login } from './login';
 import { LoginService } from './login.service';
 import { SwalUtils } from '../utils/swal-utils';

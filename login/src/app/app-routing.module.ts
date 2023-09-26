@@ -14,9 +14,14 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
+      /**IMPORTANTE: cuando la aplicacion cargue la ruta
+       * http://localhost:4200/dashboard lo vamos a redireccionar a su hijo: movies
+       * */
       {
-        path: 'movies', loadChildren: () => import('./movies/movies.module')
-        .then(m=>m.MoviesModule)
+        path: '', redirectTo: '/dashboard/movies', pathMatch: 'full'
+      },
+      {
+        path: 'movies', loadChildren: () => import('./movies/movies.module').then(m=>m.MoviesModule)
       }
     ]
   }

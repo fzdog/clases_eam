@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class MainService {
+export class MoviesService {
 
   urlBase = environment.API_URL
   url = Contants.VALIDATE_WITH_LOGIN
@@ -22,6 +22,6 @@ export class MainService {
         Authorization: 'Bearer ' + environment.ACCESS_TOKEN
       }
     }
-    return this.http.get<any>(this.urlBase + Contants.POPULAR +"?language=es",options)
+    return this.http.get<any>(this.urlBase + Contants.POPULAR + "?language=es", options)
   }
 }

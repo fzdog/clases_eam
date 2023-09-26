@@ -5,7 +5,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { HeaderModule } from '../header/header.module';
 import { SidenavModule } from '../sidenav/sidenav.module';
-import { MainModule } from '../main/main.module';
 
 
 @NgModule({
@@ -15,7 +14,6 @@ import { MainModule } from '../main/main.module';
     DashboardRoutingModule,
     HeaderModule,
     SidenavModule,
-    MainModule
   ],
   exports: [DashboardComponent]
 })

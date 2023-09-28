@@ -1,0 +1,28 @@
+.custom-card{
+    width: 18rem;
+}
+
+.card {
+    background: #fff;
+    display: inline-block;
+    margin: 1rem;
+    position: relative;
+    width: 150px;
+    border: unset;
+}
+
+
+.card a{
+    color: black;
+}
+
+.card:hover{
+    font-weight: bold;
+    
+}
+
+.custom-img{
+    min-height: calc(150px*1.5);
+    height: calc(150px*1.5);
+    
+}

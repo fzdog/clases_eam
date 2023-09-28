@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-sm-6 col-md-6 d-flex align-items-stretch justify-content-center"
+      *ngFor="let movie of movies">
+      <div class="card card-1 shadow">
+        <a routerLink="../movies/movie/{{movie.id}}" routerLinkActive="active" ariaCurrentWhenActive="page"
+          class="text-decoration-none">
+          <div *ngIf="movie.poster_path">
+            <img src="{{baseImageUrl +  movie.poster_path}}" class="custom-img" alt="{{movie.original_title}}">
+          </div>
+          <div *ngIf="!movie.poster_path">
+            <img src="../assets/img/not_found.jpg" class="custom-img" alt="{{movie.original_title}}">
+          </div>
+
+          <div class="card-body p-1">
+            <h5 class="card-title">{{movie.original_title}}</h5>
+            <p class="card-text">{{movie.release_date}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

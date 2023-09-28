@@ -7,11 +7,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse  justify-content-end m-2" id="navbarSupportedContent">
-            
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit">Buscar</button>
-            </form>
-        </div>       
+            <app-search-bar (searchText)="searchAction($event)"></app-search-bar>
+
+        </div>
     </div>
 </nav>

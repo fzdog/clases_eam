@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ViewMovieComponent } from './movies/view-movie/view-movie.component';
 
 const routes: Routes = [
   {
@@ -22,6 +21,9 @@ const routes: Routes = [
       },
       {
         path: 'movies', loadChildren: () => import('./movies/movies.module').then(m=>m.MoviesModule)
+      },
+      {
+        path: 'search', loadChildren: () => import('./search/search.module').then(m => m.SearchModule)
       }
     ]
   }

@@ -14,9 +14,8 @@ const login = async (req: Request, res: Response) => {
             return res.status(500).send({ msg: Constants.MSG_ERROR_PASSWORD_INCORRECTO, error: true })
         
         if (userDB === Constants.MSG_ERROR_USUARIO_NO_ECONTRADO)
-            return res.status(500).send({ msg:Constants.MSG_ERROR_USUARIO_NO_ECONTRADO, error: true })
-        const token = generateToken(userDB._id)        
-        res.status(200).send({ userDB,token:token })
+            return res.status(500).send({ msg:Constants.MSG_ERROR_USUARIO_NO_ECONTRADO, error: true })          
+        res.status(200).send({ data:userDB })
     } catch (error) {
         handleError(res,Constants.MSG_ERROR_APLICACION)
     }

@@ -1,4 +1,4 @@
-import { sign } from "jsonwebtoken"
+import { sign, verify } from "jsonwebtoken"
 
 
 const JWS_TOKEN = "23445trye3345457ert456"
@@ -10,8 +10,9 @@ const generateToken = (id:any) => {
     return jwt
 }
 
-const verifyToken = async () => {
-
-}
+const verifyToken = (jwt: string) => {
+    const isOk = verify(jwt, JWS_TOKEN);
+    return isOk;
+};
 
 export {generateToken,verifyToken}

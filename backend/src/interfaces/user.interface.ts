@@ -3,6 +3,6 @@ export interface User{
     lastname: string
     email: string
     password: string
+    role: string
     isActive: boolean
-    token: string
 }

@@ -31,4 +31,8 @@ const insertUser = async (req: Request, res: Response) => {
     }
 }
 
-export {login, insertUser}
+const validateTokenOk = (req: Request, res: Response) => {
+    return res.status(200).send({ msg: Constants.MSG_SUCCESS_TOKEN, error: false })
+} 
+
+export { login, insertUser, validateTokenOk }

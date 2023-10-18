@@ -3,6 +3,7 @@ export class Constants{
     static MSG_ERROR_USUARIO_NO_ECONTRADO = "Usuario no encontrado"
     static MSG_ERROR_PASSWORD_INCORRECTO = "Password incorrecto"
     static MSG_ERROR_TOKEN_INVALIDO = "Token inválido"
-    static MSG_ERROR_VALIDANDO_TOKEN = "Token validando token"
+    static MSG_ERROR_VALIDANDO_TOKEN = "Error en el token"
+    static MSG_SUCCESS_TOKEN = "Token valido"
     
 }

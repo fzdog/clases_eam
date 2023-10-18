@@ -1,0 +1,16 @@
+.active{
+    background-color: #ffffff;
+    border-color: unset !important;
+    border-radius: 0;
+    color: black;
+    font-weight: bold;
+}
+
+.list-group{
+    border-radius: 0;
+}
+
+.list-group-item{
+    border-color: unset;
+    border-width: 0;
+}

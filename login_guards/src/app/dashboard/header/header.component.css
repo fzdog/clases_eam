@@ -1,0 +1,11 @@
+.nav-item,.nav-link{
+     color: #fff !important;
+}
+
+.navbar-toggler {
+    background-color: #fff;
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 35%) !important;
+}

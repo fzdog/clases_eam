@@ -6,7 +6,10 @@ import { User } from "../interfaces/user.interface"
 
 const login = async (req: Request, res: Response) => {
     try {
-        const user: User = req.body     
+        
+        const user: User = req.body  
+        console.log(user);
+        
         const userDB = await getLogin(user)
         if (userDB === Constants.MSG_ERROR_PASSWORD_INCORRECTO)
             return res.status(500).send({ msg: Constants.MSG_ERROR_PASSWORD_INCORRECTO, error: true })

@@ -15,6 +15,7 @@ const login = async (req: Request, res: Response) => {
             return res.status(500).send({ msg:Constants.MSG_ERROR_USUARIO_NO_ECONTRADO, error: true })          
         res.status(200).send({ data:userDB })
     } catch (error) {
+        console.log(error);     
         handleError(res,Constants.MSG_ERROR_APLICACION)
     }
 }
@@ -25,7 +26,8 @@ const insertUser = async (req: Request, res: Response) => {
         const responseUser = await createUser(body)
         res.status(200).send({ responseUser })
     } catch (error) {
-
+        console.log(error);        
+        handleError(res, Constants.MSG_ERROR_APLICACION)
     }
 }
 

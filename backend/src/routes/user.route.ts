@@ -4,7 +4,7 @@ import { authMiddleware } from "../middleware/auth.middleware";
 
 const router = Router()
 
-router.post('/login',authMiddleware ,login)
-router.post('/insertUser', insertUser)
+router.post('/login',login)
+router.post('/insertUser', authMiddleware, insertUser)
 
 export {router}

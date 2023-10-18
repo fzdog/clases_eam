@@ -3,8 +3,6 @@ import { createUser, getLogin } from "../services/user.service"
 import handleError from "../utils/error.handle"
 import { Constants } from "../utils/constants"
 import { User } from "../interfaces/user.interface"
-import { generateToken } from "../utils/jwt.handle"
-
 
 const login = async (req: Request, res: Response) => {
     try {

@@ -18,8 +18,7 @@ const getLogin = async (user: User) => {
     const isOk = await verify(user.password, userDB.password)
     if (!isOk) return Constants.MSG_ERROR_PASSWORD_INCORRECTO
     return userDB 
-    //const userDBCreated = await UserModel.create(user)
-    //return userCreated
+
 }
 
 

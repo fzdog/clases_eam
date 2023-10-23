@@ -10,13 +10,13 @@ const routes: Routes = [
     path: '', component: UsersComponent
   },
   {
-    path: 'user-admin', component: UserAdminComponent
+    path: 'admin-user', component: UserAdminComponent
   },
   {
     path: 'customer', component: CustomerComponent
   },
   {
-    path: 'user', component: UserComponent
+    path: 'ti-user', component: UserComponent
   }
 ];
 

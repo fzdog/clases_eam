@@ -38,6 +38,8 @@ export class LoginComponent {
       this.extractData()
       this.loginService.login(this.login).subscribe((res) => {
         console.log(res);
+        sessionStorage.setItem('user', JSON.stringify(res.data.user))
+        sessionStorage.setItem('token', res.data.token)
         this.router.navigateByUrl('dashboard')
         SwalUtils.customMessageOk('Bienvenido','login Correcto')
       }, (error) => {

@@ -2,11 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-import { authGuard } from './guards/auth.guard';
 import { MainComponent } from './dashboard/main/main.component';
+import { authGuardGuard } from './auth/auth-guard.guard';
 import { RestrictedComponent } from './restricted/restricted.component';
-import { Utils } from './utils/utils';
-import { MainUserAdminComponent } from './main-user-admin/main-user-admin.component';
 
 const routes: Routes = [
   {
@@ -17,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard', component: DashboardComponent,
-    canActivate: [authGuard],
+    canActivate:[authGuardGuard],
     children: [
       {
         path: '', component: MainComponent,
@@ -32,7 +30,8 @@ const routes: Routes = [
         path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       },
     ]
-  }, {
+  },
+  {
     path: 'restricted', component:RestrictedComponent
   }
 

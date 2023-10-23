@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment.development';
 import { Contants } from '../constants/constants';
 import { HttpClient } from '@angular/common/http';
 import { Login } from './login';
+import { Utils } from '../utils/utils';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import { Login } from './login';
 export class LoginService {
 
   urlBase = environment.API_URL
-  url= Contants.LOGIN
+  url = Contants.LOGIN
+  urlCheckRol = Contants.CHECK_USER_ROL
 
   constructor(private http: HttpClient) {
 

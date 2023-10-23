@@ -4,6 +4,7 @@ import { Login } from './login';
 import { LoginService } from './login.service';
 import { SwalUtils } from '../utils/swal-utils';
 import { Router } from '@angular/router';
+import { Utils } from '../utils/utils';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,6 +39,8 @@ export class LoginComponent {
       this.extractData()
       this.loginService.login(this.login).subscribe((res) => {
         console.log(res);
+        Utils.setToken(res.data.token)
+        sessionStorage.setItem('user', JSON.stringify(res.data.user))
         this.router.navigateByUrl('dashboard')
         SwalUtils.customMessageOk('Bienvenido','login Correcto')
       }, (error) => {

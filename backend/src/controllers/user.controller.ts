@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { createUser, getLogin } from "../services/user.service"
+import { createUser, getLogin, getUserRolById } from "../services/user.service"
 import handleError from "../utils/error.handle"
 import { Constants } from "../utils/constants"
 import { User } from "../interfaces/user.interface"
@@ -38,4 +38,21 @@ const validateTokenOk = (req: Request, res: Response) => {
     return res.status(200).send({ msg: Constants.MSG_SUCCESS_TOKEN, error: false })
 } 
 
-export { login, insertUser, validateTokenOk }
+const checkUserRole = async (req: Request, res: Response) => {
+    try {
+
+        const userId: string = req.body._id
+        console.log(userId);
+
+        const userDB = await getUserRolById(userId)
+
+        if (userDB === Constants.MSG_ERROR_USUARIO_NO_ECONTRADO)
+            return res.status(500).send({ msg: Constants.MSG_ERROR_USUARIO_NO_ECONTRADO, error: true })
+        res.status(200).send({ data: userDB })
+    } catch (error) {
+        console.log(error);
+        handleError(res, Constants.MSG_ERROR_APLICACION)
+    }
+}
+
+export { login, insertUser, validateTokenOk, checkUserRole }

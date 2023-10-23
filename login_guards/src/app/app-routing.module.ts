@@ -19,8 +19,14 @@ const routes: Routes = [
     canActivate:[authGuardGuard],
     children: [
       {
-        path: '', component:MainComponent
+        path: '', component: MainComponent,
+        canMatch: [() => Utils.isRole('user')],
       },
+      {
+        path: '', component: MainUserAdminComponent,
+        canMatch: [() => Utils.isRole('admin')],
+      },
+
       {
         path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
       },
@@ -29,6 +35,7 @@ const routes: Routes = [
   {
     path: 'restricted', component:RestrictedComponent
   }
+
 ];
 
 @NgModule({

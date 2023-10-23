@@ -28,4 +28,15 @@ const getLogin = async (user: User) => {
     return data 
 }
 
-export { createUser, getLogin }
+const getUserRolById = async (userId: string) => {
+
+    let userDB: any = await UserModel.findById(userId)
+    if (!userDB) return Constants.MSG_ERROR_USUARIO_NO_ECONTRADO    
+
+    userDB.password = ""
+    
+    return userDB
+}
+
+
+export { createUser, getLogin, getUserRolById }

@@ -8,20 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MainService {
 
-  urlBase = environment.API_URL
-  url = Contants.VALIDATE_WITH_LOGIN
-
   constructor(private http: HttpClient) {
 
   }
 
-  getNowPlaying() {
-    const options = {
-      headers: {
-        'content-type': 'application/json',
-        Authorization: 'Bearer ' + environment.ACCESS_TOKEN
-      }
-    }
-    return this.http.get<any>(this.urlBase + Contants.POPULAR +"?language=es",options)
-  }
 }

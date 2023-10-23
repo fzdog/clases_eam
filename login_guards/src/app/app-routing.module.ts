@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { authGuard } from './guards/auth.guard';
+import { MainComponent } from './dashboard/main/main.component';
 
 const routes: Routes = [
   {
@@ -12,20 +14,14 @@ const routes: Routes = [
   },
   {
     path: 'dashboard', component: DashboardComponent,
+    canActivate: [authGuard],
     children: [
-      /**IMPORTANTE: cuando la aplicacion cargue la ruta
-       * http://localhost:4200/dashboard lo vamos a redireccionar a su hijo: movies
-       * */
       {
-        path: '', redirectTo: '/dashboard/users', pathMatch: 'full'
+        path: '', component:MainComponent
       },
       {
-        path: 'users', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
-      }
-      /*,
-      {
-        path: 'movies', loadChildren: () => import('./movies/movies.module').then(m=>m.MoviesModule)
-      }*/
+        path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
+      },
     ]
   }
 ];

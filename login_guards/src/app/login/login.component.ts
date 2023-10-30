@@ -23,6 +23,7 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    sessionStorage.clear()
     this.loginForm = this.iniciarFormulario()
   }
 

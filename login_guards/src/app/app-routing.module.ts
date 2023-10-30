@@ -5,6 +5,8 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { MainComponent } from './dashboard/main/main.component';
 import { authGuard } from './auth/auth.guard';
 import { RestrictedComponent } from './restricted/restricted.component';
+import { MainUserAdminComponent } from './dashboard/main-user-admin/main-user-admin.component';
+import { Utils } from './utils/utils';
 
 const routes: Routes = [
   {
@@ -19,7 +21,12 @@ const routes: Routes = [
     canActivate:[authGuard],
     children: [
       {
-        path: '', component:MainComponent
+        path: '', component: MainComponent,
+        canMatch: [()=> Utils.isRole('user')]
+      },
+      {
+        path: '', component: MainUserAdminComponent,
+        canMatch:[()=>Utils.isRole('admin')]
       },
       {
         path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
@@ -28,6 +35,9 @@ const routes: Routes = [
   },
   {
     path: 'restricted', component:RestrictedComponent
+  },
+  {
+    path: 'logout', redirectTo:'/login', pathMatch:'full'
   }
 ];
 

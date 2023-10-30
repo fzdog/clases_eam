@@ -7,4 +7,14 @@ export class Utils {
       return ''
     }
   }
+
+  static isRole(role: string): boolean{
+    const usuario = JSON.parse(sessionStorage.getItem('user')!)
+    if (usuario) {
+      return usuario.role.toLowerCase() == role.toLowerCase()
+    } else {
+      return false
+    }
+
+  }
 }
